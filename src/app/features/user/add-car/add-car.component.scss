@@ -1,0 +1,274 @@
+.container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.form-card {
+  background: white;
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+
+  h2 {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #1a1f36;
+    margin-bottom: 2rem;
+  }
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.form-field {
+  label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #1a1f36;
+    margin-bottom: 0.5rem;
+  }
+}
+
+.select-wrapper {
+  position: relative;
+
+  select {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    appearance: none;
+    background: white;
+    color: #1a1f36;
+    font-size: 0.9375rem;
+
+    &:focus {
+      outline: none;
+      border-color: #2563eb;
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    }
+
+    &:disabled {
+      background: #f9fafb;
+      cursor: not-allowed;
+    }
+  }
+
+  mat-icon {
+    position: absolute;
+    right: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #6b7280;
+    pointer-events: none;
+  }
+}
+
+.body-type-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-top: 0.5rem;
+  margin-bottom: 2rem;
+
+  .body-type-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.2s;
+
+    &:hover {
+      border-color: #2563eb;
+      background: #f8faff;
+    }
+
+    &.selected {
+      border-color: #2563eb;
+      background: #f8faff;
+      color: #2563eb;
+    }
+
+    mat-icon {
+      font-size: 2rem;
+      height: 2rem;
+      width: 2rem;
+    }
+
+    span {
+      font-size: 0.875rem;
+      color: #4b5563;
+    }
+  }
+}
+
+.mileage {
+  margin-bottom: 2rem;
+
+  .input-wrapper {
+    position: relative;
+
+    input {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      padding-right: 3rem;
+      border: 1px solid #e5e7eb;
+      border-radius: 0.5rem;
+      font-size: 0.9375rem;
+
+      &:focus {
+        outline: none;
+        border-color: #2563eb;
+        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+      }
+    }
+
+    .unit {
+      position: absolute;
+      right: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #6b7280;
+      font-size: 0.875rem;
+    }
+  }
+}
+
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+
+  button {
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    font-size: 0.9375rem;
+    transition: all 0.2s;
+
+    &.btn-reset {
+      color: #4b5563;
+      background: white;
+      border: 1px solid #e5e7eb;
+
+      &:hover {
+        background: #f9fafb;
+        border-color: #d1d5db;
+      }
+    }
+
+    &.btn-continue {
+      background: #2563eb;
+      color: white;
+      border: none;
+
+      &:hover:not(:disabled) {
+        background: #1d4ed8;
+      }
+
+      &:disabled {
+        background: #e5e7eb;
+        color: #9ca3af;
+        cursor: not-allowed;
+      }
+    }
+  }
+}
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 3rem;
+
+  .feature-card {
+    text-align: center;
+    padding: 1.5rem;
+
+    mat-icon {
+      font-size: 2rem;
+      height: 2rem;
+      width: 2rem;
+      color: #2563eb;
+      margin-bottom: 1rem;
+    }
+
+    h3 {
+      font-size: 1.125rem;
+      font-weight: 500;
+      color: #1a1f36;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      font-size: 0.875rem;
+      color: #6b7280;
+      line-height: 1.5;
+    }
+  }
+}
+.error-message {
+  color: #ef4444;
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+  font-weight: 500;
+}
+
+.form-field {
+  margin-bottom: 1.5rem;
+
+  &.has-error {
+    select, input {
+      border-color: #ef4444;
+    }
+  }
+}
+
+// Improve mobile responsiveness
+@media (max-width: 640px) {
+  .body-type-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .form-actions {
+    flex-direction: column;
+
+    button {
+      width: 100%;
+    }
+
+    .btn-reset {
+      order: 2;
+    }
+
+    .btn-continue {
+      order: 1;
+      margin-bottom: 0.5rem;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .body-type-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .features {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}

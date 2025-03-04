@@ -1,0 +1,115 @@
+<div class="container">
+  <div class="form-card">
+    <h2>Enter your vehicle details</h2>
+    <form [formGroup]="carForm" (ngSubmit)="onSubmit()">
+      <div class="form-grid">
+
+        <div class="form-field">
+          <label for="year">Year</label>
+          <div class="select-wrapper">
+            <select id="year" formControlName="year">
+              <option value="" disabled selected>Select Year</option>
+              <option *ngFor="let year of obdYears" [value]="year">{{year}}</option>
+            </select>
+            <mat-icon>expand_more</mat-icon>
+          </div>
+          <div class="error-message" *ngIf="carForm.get('year')?.touched && carForm.get('year')?.errors?.['required']">
+            Year is required
+          </div>
+        </div>
+
+
+        <div class="form-field">
+          <label for="make">Make</label>
+          <div class="select-wrapper">
+            <select id="make" formControlName="make">
+              <option value="" disabled selected>Select Make</option>
+              <option *ngFor="let m of obdMakes" [value]="m">{{m}}</option>
+            </select>
+            <mat-icon>expand_more</mat-icon>
+          </div>
+          <div class="error-message" *ngIf="carForm.get('make')?.touched && carForm.get('make')?.errors?.['required']">
+            Make is required
+          </div>
+        </div>
+
+
+        <div class="form-field">
+          <label for="model">Model</label>
+          <div class="select-wrapper">
+            <select id="model" formControlName="model" [disabled]="!carForm.get('make')?.value">
+              <option value="" disabled selected>Select Model</option>
+              <option *ngFor="let mod of obdModels" [value]="mod">{{mod}}</option>
+            </select>
+            <mat-icon>expand_more</mat-icon>
+          </div>
+          <div class="error-message" *ngIf="carForm.get('model')?.touched && carForm.get('model')?.errors?.['required']">
+            Model is required
+          </div>
+        </div>
+      </div>
+
+
+      <div class="form-section">
+        <label>Body Style</label>
+        <div class="body-type-grid">
+          <div class="body-type-option"
+               *ngFor="let style of obdStyles"
+               [class.selected]="carForm.get('bodyType')?.value === style"
+               (click)="selectBodyType(style)">
+            <span>{{style}}</span>
+          </div>
+        </div>
+        <div class="error-message" *ngIf="carForm.get('bodyType')?.touched && carForm.get('bodyType')?.errors?.['required']">
+          Body style is required
+        </div>
+      </div>
+
+
+      <div class="form-field mileage">
+        <label for="mileage">Mileage</label>
+        <div class="input-wrapper">
+          <input id="mileage"
+                 type="number"
+                 formControlName="millage"
+                 placeholder="Enter mileage">
+          <span class="unit">km</span>
+        </div>
+        <div class="error-message" *ngIf="carForm.get('millage')?.touched && carForm.get('millage')?.hasError('required')">
+          Mileage is required
+        </div>
+        <div class="error-message" *ngIf="carForm.get('millage')?.touched && carForm.get('millage')?.hasError('min')">
+          Mileage must be positive
+        </div>
+      </div>
+
+
+      <div class="form-actions">
+        <button type="button" class="btn-reset" (click)="resetForm()">
+          Reset
+        </button>
+        <button type="submit" class="btn-continue" [disabled]="!carForm.valid">
+          Continue
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <div class="features">
+    <div class="feature-card">
+      <mat-icon>directions_car</mat-icon>
+      <h3>Wide Selection</h3>
+      <p>All makes and models available</p>
+    </div>
+    <div class="feature-card">
+      <mat-icon>analytics</mat-icon>
+      <h3>Accurate Estimation</h3>
+      <p>Detailed evaluation of your vehicle</p>
+    </div>
+    <div class="feature-card">
+      <mat-icon>settings</mat-icon>
+      <h3>Simple Process</h3>
+      <p>Quick and easy form to fill out</p>
+    </div>
+  </div>
+</div>

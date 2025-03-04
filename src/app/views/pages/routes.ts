@@ -64,5 +64,6 @@ export const routes: Routes = [
     data: {
       title: 'About-us'
     }
-  }
+  },
+
 ];

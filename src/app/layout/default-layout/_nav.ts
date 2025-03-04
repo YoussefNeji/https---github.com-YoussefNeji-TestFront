@@ -13,7 +13,7 @@ export const navItems: INavData[] = [
   },
   {
     name: 'Vehicule',
-    url: '/vehicule',
+    url: '/add-car',
     iconComponent: { name: 'cil-car' }
   },
   {

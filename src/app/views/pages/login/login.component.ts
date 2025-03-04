@@ -14,13 +14,11 @@ import {MatCheckbox} from "@angular/material/checkbox";
   templateUrl: './login.component.html',
   imports: [
     ReactiveFormsModule,
-    MatLabel,
     MatFormField,
     MatInput,
     MatIcon,
     MatButton,
     RouterLink,
-    MatCheckbox
   ],
   styleUrls: ['./login.component.scss']
 })
